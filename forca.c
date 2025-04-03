@@ -14,6 +14,7 @@ void arrayPalavra(char *palavra, char letras[]);
 void limparTela();
 void erroForca(int err);
 void underline(int T, int ok, char palavra[], int acertos[]);
+void mudarCor(const char *cor);
 
 int main() {
     char *palavras[MAX_PALAVRAS]; 
@@ -43,18 +44,22 @@ int main() {
     //o jogo!
     while (erro < 6) {  //pode editar aqui
         limparTela();
+        mudarCor("vermelho");
         erroForca(erro);    //exibe a forca
-        printf("letras usadas: %s\n", letras_usadas);
+        mudarCor("");
+        printf("\nLetras usadas: %s\n", letras_usadas);
         
         //exibe os espaços das letras
         underline(tamanhoPalavra, erro, letras, acertos);
 
-        printf("\ndigite uma letra: ");
+        printf("\nDigite uma letra: ");
         scanf(" %c", &letraUser);
 
         //verifica se a letra já foi usada
         if (strchr(letras_usadas, letraUser) != NULL) {
-            printf("você já usou essa letra!\n");
+            mudarCor("vermelho");
+            printf("Você já usou essa letra!\n");
+            mudarCor("");
             continue;
         }
 
@@ -82,12 +87,14 @@ int main() {
             }
         }
         if (venceu) {
+            mudarCor("verde");
             printf("\nParabéns! você acertou a palavra: %s\n", letras);
             break;
         }
     }
 
     if (erro >= 6) {
+        mudarCor("vermelho");
         printf("\nGame over! a palavra era: %s\n", letras);
     }
 
@@ -213,10 +220,39 @@ void underline(int T, int ok, char palavra[], int acertos[]) {
     printf("palavra: ");
     for (int i = 0; i < T; i++) {
         if (acertos[i]) {
+            mudarCor("verde");
             printf("%c ", palavra[i]);
+            mudarCor("");
         } else {
+            mudarCor("azul");
             printf("_ ");
+            mudarCor("");
         }        
     }
     printf("\n");
+}
+
+//cores
+void mudarCor(const char *cor) {
+    #ifdef _WIN32
+        if (cor == "verde") {
+            system("color 0A"); //preto c/ texto verde no Windows
+        } else if (cor == "vermelho") {
+            system("color 0C"); //preto c/ texto vermelho
+        } else if (cor == "azul") {
+            system("color 09"); //preto c/ texto azul
+        } else {
+            system("color 07"); //padrão
+        }
+    #else
+        if (cor == "verde") {
+            printf("\033[32m"); //verde
+        } else if (cor == "vermelho") {
+            printf("\033[31m"); //vermelho
+        } else if (cor == "azul") {
+            printf("\033[34m"); //azul
+        } else {
+            printf("\033[0m"); //padrão
+        }
+    #endif
 }
