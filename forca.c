@@ -106,10 +106,17 @@ int main() {
             }
         }
         if (venceu) {
+            limparTela();
+            erroForca(erro);
+            underline(tamanhoPalavra, erro, letras, acertos); //mostra a palavra completa
+        
             mudarCor("verde");
             printf("\nParabéns! Você acertou a palavra: %s\n", letras);
+            mudarCor("");
+        
             break;
         }
+        
     }
 
     if (erro >= 6) {
