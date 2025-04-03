@@ -25,7 +25,7 @@ int main() {
     char letraUser;
 
     //carrega palavras do arquivo com tamanhos definidos 
-    if (carregarPalavras(palavras, &totalPalavras, 4, 10) != 0) {
+    if (carregarPalavras(palavras, &totalPalavras, 4, 10) != 0) {   //pode editar aqui
         return 1;
     }    
 
@@ -41,7 +41,7 @@ int main() {
     int tamanhoPalavra = strlen(letras);
 
     //o jogo!
-    while (erro < 6) {
+    while (erro < 6) {  //pode editar aqui
         limparTela();
         erroForca(erro);    //exibe a forca
         printf("letras usadas: %s\n", letras_usadas);
