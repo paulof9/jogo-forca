@@ -11,7 +11,7 @@ gcc forca.c -o forca
 ```
 Execute:
 ```bash
-./forca
+./forca ou .\forca (windows)
 ```
 
 ## Como funciona?
