@@ -72,7 +72,7 @@ int main() {
         //verifica se a letra já foi usada
         if (strchr(letras_usadas, letraUser) != NULL) {
             mudarCor("vermelho");
-            printf("Você já usou essa letra!\n");
+            printf("Você ja usou essa letra!\n");
             mudarCor("");
         
             printf("\nPressione ENTER para continuar...");
@@ -111,7 +111,7 @@ int main() {
             underline(tamanhoPalavra, erro, letras, acertos); //mostra a palavra completa
         
             mudarCor("verde");
-            printf("\nParabéns! Você acertou a palavra: %s\n", letras);
+            printf("\nParabens! Voce acertou a palavra: %s\n", letras);
             mudarCor("");
         
             break;
@@ -234,7 +234,7 @@ int carregarPalavras(char *pal[], int *totPalavras, int minTam, int maxTam) {
 //seleciona uma palavra aleatória
 int exibirPalavrasAleatorias(char *pal[], int totPalavras) {
     if (totPalavras == 0) {
-        printf("nenhuma palavra carregada!\n");
+        printf("Nenhuma palavra carregada!\n");
         return -1;
     }
     srand(time(NULL));
