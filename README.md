@@ -4,7 +4,7 @@ Um simples jogo da forca feito em C! Adivinhe a palavra, você tem 6 tentativas.
 
 ## Como rodar 🚀
 
-Compile o código:
+Compile o código: (MinGW)
 
 ```bash
 gcc forca.c -o forca
